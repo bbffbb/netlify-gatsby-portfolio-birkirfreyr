@@ -3,11 +3,16 @@ import { Helmet } from 'react-helmet'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import './all.sass'
+import '../assets/scss/material-kit-react.scss?v=1.9.0'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
 
+import HeaderLinks from "../components/Header/HeaderLinks.js";
+import Header from "../components/Header/Header.js";
+
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
+  const { ...rest } = children;
   return (
     <div>
       <Helmet>
@@ -48,8 +53,19 @@ const TemplateWrapper = ({ children }) => {
           content={`${withPrefix('/')}img/og-image.jpg`}
         />
       </Helmet>
-      <Navbar />
+      <Header
+        color="transparent"
+        brand="Material Kit React"
+        rightLinks={<HeaderLinks />}
+        fixed
+        changeColorOnScroll={{
+          height: 200,
+          color: "white"
+        }}
+        {...rest}
+      />
       <div>{children}</div>
+
       <Footer />
     </div>
   )
