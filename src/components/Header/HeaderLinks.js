@@ -85,7 +85,7 @@ export default function HeaderLinks(props) {
         <Tooltip
           id="instagram-facebook"
           title="Follow us on facebook"
-          placement={window.innerWidth > 959 ? "top" : "left"}
+          placement="top"
           classes={{ tooltip: classes.tooltip }}
         >
           <Button
@@ -102,7 +102,7 @@ export default function HeaderLinks(props) {
         <Tooltip
           id="instagram-tooltip"
           title="Follow us on instagram"
-          placement={window.innerWidth > 959 ? "top" : "left"}
+          placement="top"
           classes={{ tooltip: classes.tooltip }}
         >
           <Button
