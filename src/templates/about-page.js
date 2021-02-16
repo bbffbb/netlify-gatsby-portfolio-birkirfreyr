@@ -173,27 +173,26 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
               <h5>
                 <PageContent className="content" content={content} />
               </h5>
-            <GridContainer>
-              <GridItem xs={12} sm={12} md={6}>
-                <InfoArea
-                  title="Interests"
-                  description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
-                  icon={ComputerIcon}
-                  iconColor="info"
-                  vertical
-                />
-              </GridItem>
-              <GridItem xs={12} sm={12} md={6}>
-                <InfoArea
-                  title="Goals"
-                  description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
-                  icon={TrendingUpIcon}
-                  iconColor="success"
-                  vertical
-                />
-              </GridItem>
-            </GridContainer>
-             
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={6}>
+                  <InfoArea
+                    title="Interests"
+                    description="My main interests are ... .. "
+                    icon={ComputerIcon}
+                    iconColor="info"
+                    vertical
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={6}>
+                  <InfoArea
+                    title="Goals"
+                    description="My goals are to achieve .. . .. ."
+                    icon={TrendingUpIcon}
+                    iconColor="success"
+                    vertical
+                  />
+                </GridItem>
+              </GridContainer>
             </div>
             
           </div>
