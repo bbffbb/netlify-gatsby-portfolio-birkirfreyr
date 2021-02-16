@@ -1,6 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import Footer from '../components/Footer'
+import FooterNav from '../components/Footer'
 import Navbar from '../components/Navbar'
 import './all.sass'
 import '../assets/scss/material-kit-react.scss?v=1.9.0'
@@ -9,6 +9,7 @@ import { withPrefix } from 'gatsby'
 
 import HeaderLinks from "../components/Header/HeaderLinks.js";
 import Header from "../components/Header/Header.js";
+import Footer from "../components/Footer/Footer.js";
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
@@ -68,8 +69,6 @@ const TemplateWrapper = ({ children }) => {
         {...rest}
       />
       <div>{children}</div>
-
-      <Footer />
     </div>
   )
 }

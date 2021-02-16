@@ -30,6 +30,7 @@ import ComputerIcon from "@material-ui/icons/Computer";
 import VerifiedUser from "@material-ui/icons/VerifiedUser";
 import Fingerprint from "@material-ui/icons/Fingerprint";
 import InfoArea from "../components/InfoArea/InfoArea.js";
+import Footer from "../components/Footer/Footer.js";
 
 import profile from "../assets/img/album/profile.jpg";
 
@@ -233,6 +234,7 @@ const AboutPage = ({ data }) => {
         title={post.frontmatter.title}
         content={post.html}
       />
+      <Footer />
     </Layout>
   )
 }
