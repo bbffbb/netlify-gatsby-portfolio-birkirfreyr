@@ -17,16 +17,33 @@ import classNames from "classnames";
 import Camera from "@material-ui/icons/Camera";
 import Palette from "@material-ui/icons/Palette";
 import Favorite from "@material-ui/icons/Favorite";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
+import IconButton from "@material-ui/core/IconButton";
+import Close from "@material-ui/icons/Close";
+import Slide from "@material-ui/core/Slide";
+import Chat from "@material-ui/icons/Chat";
+import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import ComputerIcon from "@material-ui/icons/Computer";
+import VerifiedUser from "@material-ui/icons/VerifiedUser";
+import Fingerprint from "@material-ui/icons/Fingerprint";
+import InfoArea from "../components/InfoArea/InfoArea.js";
 
-import profile from "../assets/img/faces/christian.jpg";
+import profile from "../assets/img/album/profile.jpg";
 
-import studio1 from "../assets/img/examples/studio-1.jpg";
-import studio2 from "../assets/img/examples/studio-2.jpg";
-import studio3 from "../assets/img/examples/studio-3.jpg";
-import studio4 from "../assets/img/examples/studio-4.jpg";
-import studio5 from "../assets/img/examples/studio-5.jpg";
-import work1 from "../assets/img/examples/olu-eletu.jpg";
-import work2 from "../assets/img/examples/clem-onojeghuo.jpg";
+import me1 from "../assets/img/album/me4.jpg";
+import me2 from "../assets/img/album/me2.jpg";
+import me3 from "../assets/img/album/me3.jpg";
+import me4 from "../assets/img/album/me1.jpg";
+import me5 from "../assets/img/album/me5.jpg";
+import me6 from "../assets/img/album/me6.jpg";
+import me7 from "../assets/img/album/me7.jpg";
+
+
+import work1 from "../assets/img/retric.png";
+import work2 from "../assets/img/explorecrm.png";
 import work3 from "../assets/img/examples/cynthia-del-rio.jpg";
 import work4 from "../assets/img/examples/mariya-georgieva.jpg";
 import work5 from "../assets/img/examples/clem-onojegaw.jpg";
@@ -34,10 +51,14 @@ import work5 from "../assets/img/examples/clem-onojegaw.jpg";
 import styles from "../assets/jss/material-kit-react/views/profilePage.js";
 
 const useStyles = makeStyles(styles);
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="down" ref={ref} {...props} />;
+});
 
 export const AboutPageTemplate = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content
   const classes = useStyles();
+
 
   
   const imageClasses = classNames(
@@ -45,6 +66,7 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
     classes.imgRoundedCircle,
     classes.imgFluid
   );
+  const [classicModal, setClassicModal] = React.useState(false);
 
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
   return (
@@ -55,7 +77,81 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
               <GridItem xs={12} sm={12} md={6}>
                 <div className={classes.profile}>
                   <div>
-                    <img src={profile} alt="..." className={imageClasses} />
+                    <img src={profile} alt="..." className={imageClasses} onClick={() => setClassicModal(true)}/>
+                    <Dialog
+                      classes={{
+                        root: classes.center,
+                        paper: classes.modal
+                      }}
+                      open={classicModal}
+                      TransitionComponent={Transition}
+                      keepMounted
+                      onClose={() => setClassicModal(false)}
+                      aria-labelledby="classic-modal-slide-title"
+                      aria-describedby="classic-modal-slide-description"
+                    >
+                      <DialogTitle
+                        id="classic-modal-slide-title"
+                        disableTypography
+                        className={classes.modalHeader}
+                      >
+                        <IconButton
+                          className={classes.modalCloseButton}
+                          key="close"
+                          aria-label="Close"
+                          color="inherit"
+                          onClick={() => setClassicModal(false)}
+                          style={{float:"right"}}
+                          label="Close"
+                        > 
+                          <Close className={classes.modalClose} />
+                        </IconButton>
+                      </DialogTitle>
+                      <DialogContent
+                        id="classic-modal-slide-description"
+                        className={classes.modalBody}
+                        style={{width:"100%"}}
+                      >
+                        <GridContainer justify="center">
+                          <GridItem xs={12} sm={12} md={4}>
+                            <img
+                              alt="..."
+                              src={me1}
+                              className={navImageClasses}
+                            />
+                            <img
+                              alt="..."
+                              src={me2}
+                              className={navImageClasses}
+                            />
+                          </GridItem>
+                          <GridItem xs={12} sm={12} md={4}>
+                            <img
+                              alt="..."
+                              src={me3}
+                              className={navImageClasses}
+                            />
+                            <img
+                              alt="..."
+                              src={me4}
+                              className={navImageClasses}
+                            />
+                          </GridItem>
+                          <GridItem xs={12} sm={12} md={4}>
+                            <img
+                              alt="..."
+                              src={me5}
+                              className={navImageClasses}
+                            />
+                            <img
+                              alt="..."
+                              src={me6}
+                              className={navImageClasses}
+                            />
+                          </GridItem>
+                        </GridContainer>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                   <div className={classes.name}>
                     <h3 className={classes.title}>Birkir Freyr Baldursson</h3>
@@ -74,124 +170,32 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
               </GridItem>
             </GridContainer>
             <div className={classes.description}>
-              <PageContent className="content" content={content} />
-            </div>
-            <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={8} className={classes.navWrapper}>
-                <NavPills
-                  alignCenter
-                  color="primary"
-                  tabs={[
-                    {
-                      tabButton: "Studio",
-                      tabIcon: Camera,
-                      tabContent: (
-                        <GridContainer justify="center">
-                          <GridItem xs={12} sm={12} md={4}>
-                            <img
-                              alt="..."
-                              src={studio1}
-                              className={navImageClasses}
-                            />
-                            <img
-                              alt="..."
-                              src={studio2}
-                              className={navImageClasses}
-                            />
-                          </GridItem>
-                          <GridItem xs={12} sm={12} md={4}>
-                            <img
-                              alt="..."
-                              src={studio5}
-                              className={navImageClasses}
-                            />
-                            <img
-                              alt="..."
-                              src={studio4}
-                              className={navImageClasses}
-                            />
-                          </GridItem>
-                        </GridContainer>
-                      )
-                    },
-                    {
-                      tabButton: "Work",
-                      tabIcon: Palette,
-                      tabContent: (
-                        <GridContainer justify="center">
-                          <GridItem xs={12} sm={12} md={4}>
-                            <img
-                              alt="..."
-                              src={work1}
-                              className={navImageClasses}
-                            />
-                            <img
-                              alt="..."
-                              src={work2}
-                              className={navImageClasses}
-                            />
-                            <img
-                              alt="..."
-                              src={work3}
-                              className={navImageClasses}
-                            />
-                          </GridItem>
-                          <GridItem xs={12} sm={12} md={4}>
-                            <img
-                              alt="..."
-                              src={work4}
-                              className={navImageClasses}
-                            />
-                            <img
-                              alt="..."
-                              src={work5}
-                              className={navImageClasses}
-                            />
-                          </GridItem>
-                        </GridContainer>
-                      )
-                    },
-                    {
-                      tabButton: "Favorite",
-                      tabIcon: Favorite,
-                      tabContent: (
-                        <GridContainer justify="center">
-                          <GridItem xs={12} sm={12} md={4}>
-                            <img
-                              alt="..."
-                              src={work4}
-                              className={navImageClasses}
-                            />
-                            <img
-                              alt="..."
-                              src={studio3}
-                              className={navImageClasses}
-                            />
-                          </GridItem>
-                          <GridItem xs={12} sm={12} md={4}>
-                            <img
-                              alt="..."
-                              src={work2}
-                              className={navImageClasses}
-                            />
-                            <img
-                              alt="..."
-                              src={work1}
-                              className={navImageClasses}
-                            />
-                            <img
-                              alt="..."
-                              src={studio1}
-                              className={navImageClasses}
-                            />
-                          </GridItem>
-                        </GridContainer>
-                      )
-                    }
-                  ]}
+              <h5>
+                <PageContent className="content" content={content} />
+              </h5>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={6}>
+                <InfoArea
+                  title="Interests"
+                  description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
+                  icon={ComputerIcon}
+                  iconColor="info"
+                  vertical
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={6}>
+                <InfoArea
+                  title="Goals"
+                  description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
+                  icon={TrendingUpIcon}
+                  iconColor="success"
+                  vertical
                 />
               </GridItem>
             </GridContainer>
+             
+            </div>
+            
           </div>
         </div>
         {/* <section className="section section--gradient">

@@ -19,7 +19,10 @@ const TemplateWrapper = ({ children }) => {
         <html lang="en" />
         <title>{title}</title>
         <meta name="description" content={description} />
-
+        <link
+          href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          rel="stylesheet"
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -55,7 +58,7 @@ const TemplateWrapper = ({ children }) => {
       </Helmet>
       <Header
         color="transparent"
-        brand="Material Kit React"
+        brand="My online portfolio"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
